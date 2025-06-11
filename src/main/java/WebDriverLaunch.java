@@ -1,4 +1,6 @@
 import Locators.PracticeForm;
+import Locators.Alerts;
+import performOperations.AlertOperations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -45,7 +47,8 @@ public class WebDriverLaunch {
     public static void main(String[] args) {
         WebDriver driver = new WebDriverLaunch("chromedriver").driverLaunch();
         driver.get("https://demoqa.com/");
-        PracticeForm.landOnPage(driver);
+        Alerts.landOnPage(driver);
+        new AlertOperations(driver).performOperation();
         driver.quit();
     }
 }
