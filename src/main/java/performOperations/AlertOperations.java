@@ -1,6 +1,6 @@
 package performOperations;
 
-import Locators.Alerts;
+import locators.Alerts;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

@@ -1,11 +1,12 @@
-import Locators.PracticeForm;
-import Locators.Alerts;
+import locators.Alerts;
+import locators.NestedFrames;
 import performOperations.AlertOperations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import performOperations.FrameOperations;
 
 public class WebDriverLaunch {
     String driver;
@@ -47,8 +48,8 @@ public class WebDriverLaunch {
     public static void main(String[] args) {
         WebDriver driver = new WebDriverLaunch("chromedriver").driverLaunch();
         driver.get("https://demoqa.com/");
-        Alerts.landOnPage(driver);
-        new AlertOperations(driver).performOperation();
+        NestedFrames.landOnPage(driver);
+        new FrameOperations(driver).performOperation();
         driver.quit();
     }
 }
