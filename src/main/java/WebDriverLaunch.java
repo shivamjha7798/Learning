@@ -1,3 +1,4 @@
+import Locators.PracticeForm;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -43,10 +44,8 @@ public class WebDriverLaunch {
 
     public static void main(String[] args) {
         WebDriver driver = new WebDriverLaunch("chromedriver").driverLaunch();
-        driver.get("https://www.bstackdemo.com/");
-
-        System.out.println(driver.getTitle());
-        System.out.print(driver.getPageSource());
+        driver.get("https://demoqa.com/");
+        PracticeForm.landOnPage(driver);
         driver.quit();
     }
 }
