@@ -1,12 +1,9 @@
-import locators.Alerts;
-import locators.NestedFrames;
-import performOperations.AlertOperations;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import performOperations.FrameOperations;
+import performOperations.BrowserPopupOperations;
 
 public class WebDriverLaunch {
     String driver;
@@ -47,9 +44,13 @@ public class WebDriverLaunch {
 
     public static void main(String[] args) {
         WebDriver driver = new WebDriverLaunch("chromedriver").driverLaunch();
-        driver.get("https://demoqa.com/");
-        NestedFrames.landOnPage(driver);
-        new FrameOperations(driver).performOperation();
+//        driver.navigate().to("https://demoqa.com/");
+//        driver.get("https://demoqa.com/");
+//
+//        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+//        new ScreenShotUtil<WebDriver>().takeScreenshot(driver, "demoqa");
+
+        new BrowserPopupOperations(driver).performOperations();
         driver.quit();
     }
 }
