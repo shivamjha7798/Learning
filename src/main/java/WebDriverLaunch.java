@@ -4,26 +4,26 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import performOperations.BrowserPopupOperations;
+import utils.FileUtil;
+
+import java.util.Properties;
 
 public class WebDriverLaunch {
-    String driver;
-    public WebDriverLaunch(String driver){
-        this.driver = driver;
-    }
 
-    public WebDriver driverLaunch() {
+    public static WebDriver driverLaunch() {
+        Properties configProperty = FileUtil.properties("config.properties");
         RemoteWebDriver webdriver;
 
         String chromeDriverProperty = "chrome.driver.version";
-        String chromeDriverVersion = "137.0.7151.55";
+        String chromeDriverVersion = configProperty.getProperty(chromeDriverProperty);
 
         String geckoDriverProperty = "webdriver.gecko.driver";
-        String geckoDriverPath = "src/main/resources/WebDrivers/geckodriver-v0.35.0-win64/geckodriver.exe";
+        String geckoDriverPath = configProperty.getProperty(geckoDriverProperty);
 
         String edgeDriverProperty = "webdriver.edge.driver";
-        String edgeDriverPath = "src/main/resources/WebDrivers/edgedriver_win64/msedgedriver.exe";
+        String edgeDriverPath = configProperty.getProperty(edgeDriverProperty);
 
-        switch(this.driver){
+        switch(configProperty.getProperty("webdriver")){
             case "chromedriver":
                 System.setProperty(chromeDriverProperty, chromeDriverVersion);
                 webdriver = new ChromeDriver();
@@ -43,7 +43,7 @@ public class WebDriverLaunch {
     }
 
     public static void main(String[] args) {
-        WebDriver driver = new WebDriverLaunch("chromedriver").driverLaunch();
+        WebDriver driver = WebDriverLaunch.driverLaunch();
 //        driver.navigate().to("https://demoqa.com/");
 //        driver.get("https://demoqa.com/");
 //
