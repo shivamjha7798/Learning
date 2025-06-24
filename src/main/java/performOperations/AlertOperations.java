@@ -13,11 +13,11 @@ public class AlertOperations {
     static WebDriver driver;
 
     public AlertOperations(WebDriver driver){
-        this.driver = driver;
+        AlertOperations.driver = driver;
     }
 
 
-    public void performOperation(){
+    public static void performOperation(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10000));
         JavascriptExecutor exec = (JavascriptExecutor) driver;
 
